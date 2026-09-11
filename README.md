@@ -1,63 +1,71 @@
 # Unify
 
-Unify is a lightweight campus information portal that brings student opportunities, notices, events, announcements, and attendance tools into one place instead of scattering them across group chats.
+Unify is a browser-based campus portal that brings student opportunities, notices,
+events, announcements, and staff tools into one place.
 
-## What is included
+## Features
 
-- **Demo login:** Choose a Student or Staff / Admin portal. Any non-empty user ID and password are accepted.
-- **Student portal (`student.html`):**
-	- Search and filter scholarships, internships, and competitions.
-	- View deadlines, notifications, notices, and circulars by category.
-	- Browse events and workshops, register for an event, and view past-event history.
-	- Ask questions about the AI & Design Workshop and view replies.
-- **Staff / Admin portal (`staff.html`):**
-	- Publish and delete student notices, including urgent notices.
-	- Add and publish opportunities with a type, deadline, and value or award.
-	- Mark workshop attendees as present.
-	- Send announcements to the student notification widget.
-	- Review recently sent announcements and registration gaps by category.
-- **Shared browser state (`shared.js`):** Provides default demo data, local storage helpers, role guards, and logout behavior.
-- **Responsive styling (`style.css`):** Shared layout, typography, components, and mobile breakpoints for all pages.
+### Student portal
 
-## Running the demo
+- Browse scholarships, internships, and competitions.
+- Search opportunities and filter them by category.
+- View deadlines and notification updates.
+- Read academic, hostel, and exam notices.
+- View events and workshops, then register for an event.
+- View past-event history.
+- Ask questions about the AI & Design Workshop and see replies.
 
-No build step or package installation is required.
+### Staff and admin portal
 
-1. Open `index.html` in a browser, or serve the folder with any static web server.
-2. Enter any values in the selected portal's two login fields.
-3. Use the Student or Staff / Admin portal.
-4. Open the other portal by logging out and signing in with the other role.
+- Publish and delete student notices.
+- Mark notices as important or urgent.
+- Add and publish opportunities with a category, deadline, and value.
+- Track event attendance with digital checkboxes.
+- Send announcements to the student notification widget.
+- View recently sent announcements.
+- View registration statistics in the gap detector.
 
-For a local static server, for example:
+## Getting started
 
-```text
-python -m http.server 8000
-```
+This project is a static frontend and does not require a build step or backend.
 
-Then visit `http://localhost:8000`.
+1. Open `index.html` in a modern browser.
+2. Choose either the Student or Staff / Admin login.
+3. Enter any value in both login fields. This is demo authentication, so no real
+	 account is required.
 
-## Data and demo behavior
-
-This is a front-end demo and does not connect to a database or authentication service.
-
-- The selected role and entered user ID are stored in `sessionStorage` for the current browser session.
-- Editable portal data is stored in `localStorage` with keys prefixed by `unify_`.
-- Staff changes appear immediately in the student portal when both pages use the same browser storage.
-- Apply and event registration actions currently display demo confirmations; they do not submit applications or create registrations.
-- To clear locally stored portal data, use the browser's site storage controls. The `resetStore()` helper in `shared.js` can also be called from the browser console.
+For the most reliable local experience, serve the folder with any static file
+server and open the resulting local URL. The pages can also be opened directly
+from the file system in browsers that allow local storage for files.
 
 ## Project structure
 
-```text
-index.html    Demo login and role-based routing
-student.html  Student opportunities, notices, events, and doubts portal
-staff.html    Staff/admin publishing, attendance, announcements, and analytics portal
-shared.js     Default data, storage helpers, authentication guards, and logout
-style.css     Shared visual styles and responsive layout rules
-README.md     Project documentation
-```
+| File | Purpose |
+| --- | --- |
+| `index.html` | Demo login screen and role-based routing |
+| `student.html` | Student dashboard, feeds, events, deadlines, and doubts |
+| `staff.html` | Staff/admin dashboard for publishing and managing campus content |
+| `shared.js` | Default data, browser storage helpers, role guards, and logout logic |
+| `style.css` | Shared responsive layout, typography, colors, and components |
 
-## Notes
+## Data and authentication
 
-- The interface uses the Newsreader and IBM Plex Sans fonts from Google Fonts when network access is available.
-- Dates for default opportunities are generated relative to the day the page loads, so countdowns stay current in the demo.
+- Login state is stored in `sessionStorage` under `unify_role` and `unify_user`.
+- Opportunities, notices, notifications, announcements, attendance, and doubts
+	are stored in `localStorage` with keys prefixed by `unify_`.
+- The initial demo data is defined in `shared.js` and is copied into storage when
+	no saved data exists.
+- This prototype has no server, database, real authentication, or persistent
+	multi-user account system. Data is local to the current browser profile.
+
+To restore the default demo data, clear the site's local storage in the browser's
+developer tools, then reload the pages. Logging out clears only the current login
+session; it does not delete saved portal data.
+
+## Technologies
+
+- HTML5
+- CSS3 with responsive media queries
+- Vanilla JavaScript
+- Browser `sessionStorage` and `localStorage`
+- Google Fonts: Newsreader and IBM Plex Sans
