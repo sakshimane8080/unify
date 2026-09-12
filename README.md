@@ -1,5 +1,12 @@
 # Unify
 
+## Run the project
+
+Open `index.html` directly in a browser, or run this in PowerShell from the project folder:
+
+```powershell
+start .\index.html
+```
 Unify is a browser-based campus portal that brings student opportunities, notices,
 events, announcements, and staff tools into one place.
 
