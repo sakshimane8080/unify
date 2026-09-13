@@ -68,4 +68,4 @@ session; it does not delete saved portal data.
 - CSS3 with responsive media queries
 - Vanilla JavaScript
 - Browser `sessionStorage` and `localStorage`
-- Google Fonts: Newsreader and IBM Plex Sans
+- Google Fonts: Newsreader and IBM Plex Sa

@@ -48,9 +48,22 @@ function resetStore(){
 /* ---------------- auth guard ---------------- */
 function requireRole(role){
   const current = sessionStorage.getItem('unify_role');
-  if(current !== role){ window.location.href = 'index.html'; }
+
+  if(!current){
+    window.location.href = 'index.html';
+    return false;
+  }
+
+  if(current !== role){
+    const destination = current === 'student' ? 'student.html' : current === 'staff' ? 'staff.html' : 'index.html';
+    window.location.href = destination;
+    return false;
+  }
+
+  return true;
 }
 function logout(){
   sessionStorage.removeItem('unify_role');
+  sessionStorage.removeItem('unify_user');
   window.location.href = 'index.html';
 }
